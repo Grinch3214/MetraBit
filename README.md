@@ -399,7 +399,9 @@ function random() {
     return array
   }
 }
-var test = random()
+var pushArr = random()
+
+pushArr()
 ```
 
 
