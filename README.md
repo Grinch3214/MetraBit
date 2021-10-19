@@ -390,7 +390,7 @@ countPlus()
 function random() {
   var array = []
   return function() {
-    var number = Math.floor(Math.random() * 5)
+    var number = Math.floor(Math.random() * 50)
     if (!array.includes(number)) {
       array.push(number)
     } else {
