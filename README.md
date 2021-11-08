@@ -582,3 +582,32 @@ var product = {
 # Homework #6
 
 ### Задача №1
+
+Создайте объект с тремя методами и двумя свойствами:
+* firstOperand - хранит значение первого операнда
+* secondOperand - хранит значение второго операнда
+* setValues() запрашивает два значения при помощи prompt, сохраняет их значение, приведенное к числу, в firstOperand и  secondOperand.
+* sumValues() возвращает сумму введенных свойств.
+* multiplyValues() возвращает произведение введенных свойств.
+Сделать проверку в методах sumValues и multiplyValues на наличие чисел, если хотя бы одно число не указано, выводить в консоль сообщение ‘Числа не заданы’.
+
+```js
+var numbers = {
+  firstOperand: null,
+  secondOperand: null,
+  setValues: function() {
+    this.firstOperand = +prompt("First number")
+    this.secondOperand = +prompt("Second number")
+  },
+  sumValue: function() {
+    return !(isNaN(this.firstOperand && this.secondOperand) || !this.firstOperand || !this.secondOperand) ? (this.firstOperand + this.secondOperand) : 'Числа не заданы'
+  },
+  multiplyValues: function() {
+    return !(isNaN(this.firstOperand && this.secondOperand) || !this.firstOperand || !this.secondOperand) ? (this.firstOperand * this.secondOperand) : 'Числа не заданы'
+  },
+}
+
+numbers.setValues()
+console.log(numbers.sumValue())
+console.log(numbers.multiplyValues())
+```
