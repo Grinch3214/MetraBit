@@ -475,6 +475,110 @@ sum([1, 5, 10])
 * Реализовать с помощью рекурсии
 
 ```js
-
+function range(first, last) {
+  var arr = []
+  if (first > last) {
+    return arr
+  }
+  arr.push(first)
+  return (arr.concat(range(++first, last))).toString()
+}
+range(1, 10)
 ```
 
+***
+
+### Задача №6
+
+Напишите функцию, которая принимает массив из последовательности чисел и возвращает максимальное число.
+* Реализовать с помощью рекурсии
+
+```js
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+function maxNum(numbers) {
+  if(numbers.length > 2) {
+    numbers.splice(0, 1)
+    return maxNum([numbers[0], maxNum(numbers)])
+  } else {
+    return numbers[0] >= numbers[1] ? numbers[0] : numbers[1]
+  }
+}
+maxNum(numbers)
+```
+Через Math:
+
+```js
+function getMaxNum(numbers) {
+  return Math.max.apply(null, numbers)
+}
+getMaxNum(numbers)
+```
+
+***
+
+### Задача №7
+
+Создать объект пользователя со следующими полями:
+* firstName
+* lastName
+* birthday
+Значения полей указать произвольное. Реализовать следующие геттеры и сеттеры:
+* геттер fullName - возвращает конкатенированную строку, состоящую из firstName и lastName
+* сеттер fullName - устанавливает значения в поля firstName и lastName
+* геттер age - возвращает количество лет от даты указанной в birthday, до текущего дня.
+* сеттер age - изменяет год в поле birthday, вычисляя это значение из текущего года и нового значения
+
+```js
+var user = {
+  firstName: 'Max',
+  lastName: 'Grinch',
+  birthday: '01/01/1990',
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`
+  },
+  set fullName(newFullName) {
+    this.firstName = newFullName.substring(0, newFullName.indexOf(' '))
+    this.lastName = newFullName.substring(newFullName.indexOf(' '))
+  },
+  get age() {
+    return new Date(new Date() - new Date(this.birthday)).getFullYear() - 1970
+  },
+  set age(newBirthday) {
+    var fullYear = new Date().getFullYear()
+    this.birthday = this.birthday.substring(0, 7).concat(fullYear - newBirthday)
+  }
+}
+```
+
+***
+
+### Задача №8
+
+Создать объект товара со следующими полями:
+* name
+* id
+* price
+* discount
+Значения полей указать произвольное. Реализовать следующие геттеры и сеттеры:
+* геттер discountPrice - возвращает цену товара, уменьшенную на количество процентов указанных в поле discount
+* сеттер discountPrice - устанавливает значение поля price, увеличивая новое значение на количество процентов указанных в поле discount
+
+```js
+var product = {
+  name: 'Phone',
+  id: 1,
+  price: 8999,
+  discount: 5,
+  get discountPrice() {
+    return this.price - this.price * (this.discount / 100)
+  },
+  set discountPrice(newPrice) {
+    this.price = newPrice + newPrice * (this.discount / 100)
+  }
+}
+```
+
+# Homework #6
+
+### Задача №1
