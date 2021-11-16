@@ -827,13 +827,17 @@ function checkFigure() {
 
 for(let i = 0; i < figures.length; i++) {
   console.log(`Фигура №${i} имеет площадь ${(checkFigure.call(figures[i])).toFixed()}`)
-} ```
+} 
+```
 
 ***
 
 ### Задача №4
 
-Создайте конструктор ProductCreator. Добавьте ему свойство instanceCounter и метод showProductCreatorInstanceCounter. Метод showProductCreatorInstanceCounter должен наследоваться всеми потомками конструктора ProductCreator и возвращать число созданных потомков этим конструктором. При создании нового экземпляра конструктором ProductCreator счётчик instanceCounter должен увеличиваться на 1 и это значение должно быть записано в поле id создаваемого объекта.
+Создайте конструктор ProductCreator. Добавьте ему свойство instanceCounter и метод showProductCreatorInstanceCounter. 
+Метод showProductCreatorInstanceCounter должен наследоваться всеми потомками конструктора ProductCreator и возвращать число созданных потомков этим конструктором. 
+При создании нового экземпляра конструктором ProductCreator счётчик instanceCounter должен увеличиваться на 1 и это значение должно быть записано в поле id создаваемого объекта.
+
 
 ```js
 function ProductCreator() {
