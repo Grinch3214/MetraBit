@@ -730,5 +730,120 @@ console.log(askQuestion.apply(userDasha, ['Привет', 'И ты туда же
 Напишите функцию getDiscountAmount, которая будет принимать единственным параметром число (процент скидки) и на основании свойства price (использовать this) будет возвращать сумму скидки для конкретного товара, предварительно убедившись что price отличен от нуля. При помощи метода bind создать функции расчета скидки для каждого объекта.
 
 ```js
+const samsung = {
+  name: 'Samsung Galaxy S20',
+  price: 800
+}
 
+const xiaomi = {
+  name: 'Xiaomi 11',
+  price: 600
+}
+
+const iphone = {
+  name: 'Iphone 12',
+  price: 200
+}
+
+function getDiscountAmount(discount) {
+  return this.price > 0 ? this.price / 100 * discount : 'Товар отсутствует'
+}
+
+const saleSamsung = getDiscountAmount.bind(samsung)
+console.log('Скидка: ', saleSamsung(10))
+
+const saleXiaomi = getDiscountAmount.bind(xiaomi)
+console.log('Скидка: ', saleXiaomi(15))
+
+const saleIphone = getDiscountAmount.bind(iphone)
+console.log('Скидка: ', saleIphone(50))
+```
+
+***
+
+### Задача №3
+
+Создайте массив figures, который будет состоять из объектов двух видов фигур: прямоугольников и кругов (10 элементов).
+Примеры объектов:
+* Круг: {figureType: ‘circle’, radius: 5 }
+* Прямоугольник: {figureType: ‘rectangle’, weight: 100, height: 50}
+
+Написать функцию, которая будет проверять поле figureType, высчитывать площадь фигуры (реализовать с использованием this), для кругов округлить получившийся результат. Написать цикл для массива figures и выводить в консоль следующую строку:
+‘Фигура №{номер фигуры} имеет площадь {результат вычислений}’
+В цикле для каждого объекта вызвать ранее написанную функцию используя метод **call**
+
+```js
+const figures = [
+    {
+      figureType: 'circle', 
+      radius: 5
+    },
+    {
+      figureType: 'circle', 
+      radius: 20
+    },
+    {
+      figureType: 'circle', 
+      radius: 25
+    },
+    {
+      figureType: 'circle', 
+      radius: 30
+    },
+    {
+      figureType: 'circle', 
+      radius: 40
+    },
+    {
+      figureType: 'rectangle',
+      weight: 100,
+      height: 50
+    },
+    {
+      figureType: 'rectangle',
+      weight: 150,
+      height: 100
+    },
+    {
+      figureType: 'rectangle',
+      weight: 250,
+      height: 150
+    },
+    {
+      figureType: 'rectangle',
+      weight: 350,
+      height: 200
+    },
+    {
+      figureType: 'rectangle',
+      weight: 450,
+      height: 300
+    },
+]
+
+function checkFigure() {
+  return this.figureType === 'circle' ? Math.round(Math.pow(this.radius, 2) * Math.PI) : this.weight * this.height
+}
+
+for(let i = 0; i < figures.length; i++) {
+  console.log(`Фигура №${i} имеет площадь ${(checkFigure.call(figures[i])).toFixed()}`)
+} ```
+
+***
+
+### Задача №4
+
+Создайте конструктор ProductCreator. Добавьте ему свойство instanceCounter и метод showProductCreatorInstanceCounter. Метод showProductCreatorInstanceCounter должен наследоваться всеми потомками конструктора ProductCreator и возвращать число созданных потомков этим конструктором. При создании нового экземпляра конструктором ProductCreator счётчик instanceCounter должен увеличиваться на 1 и это значение должно быть записано в поле id создаваемого объекта.
+
+```js
+function ProductCreator() {
+  ProductCreator.prototype.instanceCounter = 0
+  ProductCreator.prototype.showProductCreatorInstanceCounter = function() {
+    ProductCreator.prototype.instanceCounter++
+    if (this instanceof ProductCreator) {
+      this.id = ProductCreator.prototype.instanceCounter
+      return `ID экземпляра: ${this.id}`
+    }
+  }
+}
 ```
