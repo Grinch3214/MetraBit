@@ -298,21 +298,21 @@ function giveMeArray(arrayNumber, arrayString) {
         arrayNumber.sort(function(a, b) { 
             return a - b 
         }) 
-        var indexCenter = Math.floor(arrayNumber.length / 2) 
-        for (let i = 0; i < arrayString.length; i++) { 
-           arrayNumber.splice(indexCenter++, 0, arrayString[i]) 
-        } 
-        
-         
+        var numberCenter = arrayNumber.length / 2
+
+        var arrMerge = arrayNumber.slice()
+        arrMerge.splice(numberCenter, 0, arrayString)
+        arrMerge = arrMerge.flat()
+        var test = arrMerge.slice(0, arrMerge.length / 2)
+//         console.log(test)
+        return test
     } else { 
         console.log('Массивы имеют разную длину') 
     } 
-    return arrayNumber; 
 } 
 var num = [73, 4, 11, 234, 58, 134] 
 var str = ['js', 'css', 'jq', 'html', 'vue', 'bootstrap'] 
-giveMeArray(num, str) 
-console.log(num)
+giveMeArray(num, str)
 ```
 ***
 
