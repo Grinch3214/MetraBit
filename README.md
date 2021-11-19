@@ -13,7 +13,7 @@
 var array = [16, true, 'MetraBit', NaN, { name: 'UserName', hobby: 'JS' }, 30, NaN, null, false, 'Vue']
 
 for (var i = 0; i < array.length; i++) {
-	if (array[i] !== array[i]) {
+	if (array[i] !== array[i] && isNaN(array[i])) {
 		array[i] = null
 	}
 }
@@ -26,7 +26,7 @@ var arrayForWhile = [16, true, 'MetraBit', NaN, { name: 'UserName', hobby: 'JS' 
 var n = arrayForWhile.length
 
 while (n--) {
-	if (arrayForWhile[n] !== arrayForWhile[n]) {
+	if (arrayForWhile[n] !== arrayForWhile[n] && isNaN(arrayForWhile[n])) {
 		arrayForWhile[n] = null
 	}
 }
@@ -52,7 +52,7 @@ var arrayOfNumbers = [45, '246', 73, '4', 15, 36, 17, 89, '49', 167, 123]
 var counter = 0
 
 for (var i = 0; i < arrayOfNumbers.length; i++) {
-	arrayOfNumbers[i] = Number(arrayOfNumbers[i])
+	arrayOfNumbers[i]
 }
 
 for (var x = 0; x < arrayOfNumbers.length; x++) {
@@ -61,7 +61,7 @@ for (var x = 0; x < arrayOfNumbers.length; x++) {
 	}
 }
 
-if (counter > 0) {
+if (counter) {
 	console.log(`В данном массиве: ${counter} чисел кратных 3`)
 } else {
 	console.warn('В данном массиве нет чисел кратных 3')
@@ -78,7 +78,7 @@ while (arrNum--) {
 		count++
 	}
 }
-count > 0 ? console.log(`В данном массиве: ${count} чисел кратных 3`) : console.warn('В данном массиве нет чисел кратных 3')
+console.log(count ? `В данном массиве: ${count} чисел кратных 3` : console.warn('В данном массиве нет чисел кратных 3'))
 ```
 ***
 
@@ -98,7 +98,7 @@ n – число элементов этого типа в массиве
 **[16, true, 'MetraBit', NaN, {name: 'UserName', hobby: 'JS'}, 30, NaN, null, false, 'Vue']**
 
 ``` js
-var arrayOfTypes = [16, true, 'MetraBit', NaN, { name: 'UserName', hobby: 'JS' }, 30, NaN, null, false, 'Vue', ['test for Array']]
+var arrayOfTypes = [16, true, 'MetraBit', NaN, { name: 'UserName', hobby: 'JS' }, 30, NaN, null, false, 'Vue']
 
 function arrayOftypesFunc(arrayOfTypes) {
 	var countString = 0
@@ -106,7 +106,6 @@ function arrayOftypesFunc(arrayOfTypes) {
 	var countBoolean = 0
 	var countNull = 0
 	var countObject = 0
-	var countArray = 0
 	for (var i = 0; i < arrayOfTypes.length; i++) {
 		if (typeof arrayOfTypes[i] === 'string') {
 			countString++;
@@ -116,9 +115,7 @@ function arrayOftypesFunc(arrayOfTypes) {
 			countBoolean++;
 		} else if (!arrayOfTypes[i]) {
 			countNull++;
-		} else if (arrayOfTypes[i] instanceof Array) {
-			countArray++;
-		} else {
+        } else {
 			countObject++;
 		}
 	}
@@ -127,7 +124,6 @@ function arrayOftypesFunc(arrayOfTypes) {
 	Number: ${countNumber}
 	Boolean: ${countBoolean}
 	Null: ${countNull}
-	Array: ${countArray}
 	Object: ${countObject}
 	`)
 }
@@ -182,17 +178,17 @@ console.log(sayHi(userHi, userName))
 
 ``` js
 var user = {
-	name: 'Arnold'
-}
-
-user.sayHello = function (message = 'Доброе утро') {
+  name: 'Arnold',
+  sayHello: function (message = 'Доброе утро') {
 	if (typeof this.name === 'string'
-		&& this.name.length >= 1 && this.name != undefined || null) {
+		&& this.name.length > 0 && this.name != undefined || null) {
 		return `${message}, ${this.name}`
 	} else {
-		console.log('Имя пользователя не указано')
+		return 'Имя пользователя не указано'
 	}
+  }
 }
+user.sayHello()
 ```
 ***
 
