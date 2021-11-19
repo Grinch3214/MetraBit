@@ -43,5 +43,10 @@ numbers([1, 4, 13])
 * используйте метод reduce().
 
 ```js
+const words = ['one', 'two', 'four', 'seven', 'eleven', 'twelve']
 
+function getElements(array) {
+  return array.filter(element => element.length > 5)
+}
+getElements(words)
 ```
