@@ -461,8 +461,7 @@ console.log(addeter(+prompt('Второе число:')))
 Создайте IIFE, которое вернёт функцию, у которой в замыкании будет переменная counter со значением 10. Сделайте так, чтобы каждый вызов возвращённой функции уменьшал это число на 1 и выводил на экран уменьшенное число. Добавьте функционал, чтобы отсчет доходил до 0, а затем каждый последующий вызов функции выводил на экран сообщение о том, что отсчет окончен.
 
 ```js
-var result = (function() {
-  var counter = 10
+var result = (function(counter) {
   return function() {
     if(counter <= 0) {
         return 'Отсчёт окончен'
@@ -470,7 +469,7 @@ var result = (function() {
       return --counter
     }
   }
-})()
+})(10)
 result()
 ```
 
@@ -482,7 +481,7 @@ result()
 * Реализовать с помощью рекурсии
 
 ```js
-var sum = (array) => (array.length === 0) ? 0 : array[0] + sum(array.slice(1))
+var sum = (array) => (!array.length) ? 0 : array[0] + sum(array.slice(1))
 sum([1, 5, 10])
 ```
 
@@ -494,15 +493,16 @@ sum([1, 5, 10])
 * Реализовать с помощью рекурсии
 
 ```js
-function range(first, last) {
-  var arr = []
-  if (first > last) {
-    return arr
-  }
-  arr.push(first)
-  return (arr.concat(range(++first, last))).toString()
+function getRange(first, last) {
+    if (first > last) {
+        return 'Первое число должно быть меньше второго!'
+    } else if(first === last) {
+        return last
+    } else {
+        return ([first].concat(getRange(++first, last))).join(',')
+    } 
 }
-range(1, 10)
+getRange(1, 10)
 ```
 
 ***
