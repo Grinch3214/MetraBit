@@ -859,16 +859,26 @@ for(let i = 0; i < figures.length; i++) {
 
 
 ```js
+var counter = 0
 function ProductCreator() {
-  ProductCreator.prototype.instanceCounter = 0
-  ProductCreator.prototype.showProductCreatorInstanceCounter = function() {
-    ProductCreator.prototype.instanceCounter++
-    if (this instanceof ProductCreator) {
-      this.id = ProductCreator.prototype.instanceCounter
-      return `ID экземпляра: ${this.id}`
-    }
-  }
+  this.instanceCounter = ++counter
+  this.id = this.instanceCounter
+  this.showProductCreatorInstanceCounter = function () {
+    return counter
 }
+  }
+
+var productA = new ProductCreator()
+var productB = new ProductCreator()
+var productC = new ProductCreator()
+var productD = new ProductCreator()
+var productE = new ProductCreator()
+
+console.log(productA)
+console.log(productB)
+console.log(productC)
+console.log(productD)
+console.log(productE)
 ```
 
 # Homework #8
