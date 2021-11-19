@@ -412,7 +412,7 @@ function random() {
     if (!array.includes(number)) {
       array.push(number)
     } else {
-      console.log('Это число уже есть в массиве!')
+      return 'Это число уже есть в массиве!'
     }
     return array
   }
