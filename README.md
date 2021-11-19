@@ -429,12 +429,14 @@ pushArr()
 Создайте IIFE, которое получает пароль в аргументе и возвращает внутреннюю функцию, которая в качестве аргумента принимает введенную строку и возвращает булево значение true, если введенная строка совпадает с паролем и faulse – если не совпадает. Для сохранения результата IIFE создайте переменную checkPassword.
 
 ```js
-var checkPassword = (function(password = 'qwerty') {
-  return function(string) {
-    return string === password ? true : false
-  }
-})()
-checkPassword('qwerty')
+var password = 'qwerty'
+
+var checkPassword = ((function(pass) {
+    return function(passCheck) {
+       return passCheck === pass
+    }
+})(password))
+console.log(checkPassword(prompt('Введите пароль')))
 ```
 
 ***
@@ -445,12 +447,11 @@ checkPassword('qwerty')
 
 ```js
 var addeter = (function(n) {
-  var n = 2
   return function(t) {
     return t + n;
   };
-})();
-addeter(6) // 8
+})(+prompt('Первое число:'));
+console.log(addeter(+prompt('Второе число:')))
 ```
 
 ***
