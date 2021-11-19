@@ -342,12 +342,34 @@ giveMeStringBro('Hello my dear friend', 11)
 Напишите функцию, которая принимает первым аргументом фразу, а вторым аргументом – слово (часть заданной фразы). Вырежьте из фразы заданное слово и верните строку которая осталась.
 
 ``` js
-var phrase = 'The quick brown fox jumps over the lazy dog.';
+var phrase = 'The quick brown fox jumps over the lazy dog.'
 
 function cutString(phrase, str) {
   var phraseWord = phrase.indexOf(str)
   var lengthStr = str.length
   return phrase.substr(0, phraseWord) + phrase.substr(phraseWord + lengthStr + 1)
+}
+
+cutString(phrase, 'lazy')
+
+
+var phrase = 'The quick brown fox jumps over the lazy dog.'
+
+function cutString(phrase, str) {
+  var phraseWord = phrase.indexOf(str)
+  var lengthStr = str.length
+  return phrase.substring(0, phraseWord) + phrase.substring(phraseWord + lengthStr + 1)
+}
+
+cutString(phrase, 'lazy')
+
+
+var phrase = 'The quick brown fox jumps over the lazy dog.';
+
+function cutString(phrase, str) {
+  var phraseWord = phrase.indexOf(str)
+  var lengthStr = str.length
+  return phrase.slice(0, phraseWord) + phrase.slice(phraseWord + lengthStr + 1)
 }
 
 cutString(phrase, 'lazy')
