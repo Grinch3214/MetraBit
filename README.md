@@ -1,97 +1,116 @@
-# Homework #2
+# Homework #3
 
 ### Задача №1
 
-Создать объект ‘user’ с полем ‘name’. Значение указать произвольное.
+Написать функцию, которая в качестве формальных параметров принимает неограниченное количество аргументов. В функции произвести проверку является ли переданный аргумент массивом. Из аргументов, которые являются массивами, сделать один общий массив. Добавить строку ‘Start’ в начало массива, строку ‘The End’ в конец массива. Вернуть результирующий массив в обратной последовательности (Первый элемент – последний, а последний - первый).
 
-Добавить метод sayHello() в объект. Метод в качестве аргумента должен принимать единственное значение - строку приветствия. Сделать дефолтное значение этого формального параметра строкой: “Добрый день”.
-
-Возвращать функция будет конкатенированную строку типа: ‘Приветствие’ и ‘name’. В функцию добавить проверки на:
-
-* наличия поля ‘name’ в объекте (не undefined)
-* поле ‘name’ является строкой
-* поле ‘name’ не пустая строка
-
-Если какое-либо условие не выполняется, то в этом случаи возвращать строку: ‘Имя пользователя не указано’. Для формирования результирующей строки использовать this.
+Пример аргументов:
+* null, 123, ‘JS’, [‘Nastya’, ‘Dima’, ‘Max’, ‘Masha’], undefined, {}, true, [‘Sasha’, ‘Denis’, ‘Marina’]
 
 ``` js
-var user = {
-  name: 'Arnold',
-  sayHello: function (message = 'Доброе утро') {
-	if (typeof this.name === 'string'
-		&& this.name.length > 0 && this.name != undefined || null) {
-		return `${message}, ${this.name}`
-	} else {
-		return 'Имя пользователя не указано'
-	}
-  }
+function checkArray() {
+    var arr = []
+    for (var i = 0; i < arguments.length; i++) {
+        if (arguments[i] instanceof Array) {
+            arr = arr.concat(arguments[i])
+        }
+    }
+    arr.unshift('Start')
+    arr.push('The End')
+    arr.reverse()
+    return arr
 }
-user.sayHello()
+checkArray(null, 123, 'JS', ['Nastia', 'Dima', 'Max', 'Masha'], undefined, {}, true, ['Sasha', 'Denis', 'Marina'])
 ```
 ***
 
 ### Задача №2
 
-Создать объект product, со следующими полями:
+Написать функцию, которая в качестве аргументов принимает два массива, первый – массив чисел, второй – массив строк. Производит проверку равна ли длинная первого массива, длине второго массива. Если результат отрицательный, то вернуть строку “Массивы имеют разную длину”. Если результат положительный, то отсортировать массив чисел по возрастанию и с помощью метода **splice** добавить все элементы массива со строками в середину массива с числами (чтобы в результате получился одномерный массив).
 
-* name: ‘iPhone’,
-* id: 7485,
-* price: 1000
+Пример массивов:
+* [73, 4, 11, 234, 58, 134]
+* ['js', 'css', 'jq’, ‘html’, ‘vue’, ‘bootstrap’]
 
-Написать метод этого объекта который в качестве аргумента принимает число (количество процентов, на которое нужно увеличить свойство ‘price’).
+``` js
+function giveMeArray(arrayNumber, arrayString) { 
+    if (arrayNumber.length === arrayString.length) { 
+        arrayNumber.sort(function(a, b) { 
+            return a - b 
+        }) 
+        var numberCenter = arrayNumber.length / 2
 
-* Увеличить свойство ‘price’ на заданное количество процентов используя this.
-* Вернуть новое значение свойства ‘price’.
-
-``` js 
-var product = {
-	name: 'iPhone',
-	id: 7485,
-	price: 1000,
-	getNumber: function (number = 45) {
-		var pricePrecent = this.price / 100 * number
-		return this.price = this.price + pricePrecent
-	}
-}
+        var arrMerge = arrayNumber.slice()
+        arrMerge.splice(numberCenter, 0, arrayString)
+        arrMerge = arrMerge.flat()
+        var test = arrMerge.slice(0, arrMerge.length / 2)
+//         console.log(test)
+        return test
+    } else { 
+        console.log('Массивы имеют разную длину') 
+    } 
+} 
+var num = [73, 4, 11, 234, 58, 134] 
+var str = ['js', 'css', 'jq', 'html', 'vue', 'bootstrap'] 
+giveMeArray(num, str)
 ```
 ***
 
 ### Задача №3
 
-Написать функцию ‘showStudentsFavoriteLessons’, которая в качестве аргументов будет принимать неограниченное количество имён студентов (строк). И выводит в консоль список любимых уроков для каждого студента.
+Написать функцию, которая принимает в качестве аргумента строку произвольной длины и число (n) – до какого символа обрезать строку.
 
-Внутри функции ‘showStudentsFavoriteLessons’ создать массив ‘lessons’ и функцию ‘checkStudentFavoriteLessons’.
-
-Массив ‘lessons’ будет состоять из строк (названий уроков).
-
-Пример массива ‘lessons’:
-* ['Математика', 'История', 'Спорт', 'Литература', 'Биология', 'География']
-
-Функция ‘checkStudentFavoriteLessons’ в качестве аргумента будет принимать имя студента. В функции из массива ‘lessons’ нужно выбрать последние n элементов (где n – это случайное число) и поместить массив этих элементов в переменную ‘favoriteLessons’ Если в массиве есть хоть один элемент, то вернуть строку, в которой сначала будет имя студента, двоеточие и все элементы из массива ‘favoriteLessons’ через запятую. Если в массиве ‘favoriteLessons’ нет элементов, то вернуть строку с именем студента и сообщением ‘У этого студента нет любимых предметов’.
-
-Один вызов функции должен выводить сообщения сразу для всех студентов.
-
-Пример вызова функции: ```showStudentsFavoriteLessons('Артур', 'Женя', 'Костя', 'Маша', 'Денис')```
+Реализуйте сравнение длины строки и переданного вторым аргументом числа. Если длина строки превышает n, то вернуть строку, состоящую из первых n символов строки и добавить троеточия в конце. Если меньше, вернуть начальную строку, в которой, заменены все пробелы на “-” и первая и последняя буквы являются заглавными.
 
 ``` js
-function showStudentsFavoriteLessons() {
-	var lessons = ['Математика', 'История', 'Спорт', 'Литература', 'Биология', 'География']
-	for (var i = 0; i < arguments.length; i++) {
-		var result = checkStudentFavoriteLessons(arguments[i], lessons)
-		console.log(result)
-	}
-
-	function checkStudentFavoriteLessons(userName, lessonsArray) {
-		var favoriteLesson = []
-		var nameLessonsLength = lessonsArray.length -1
-		var elementsRandom = Math.floor(Math.random() * nameLessonsLength)
-		for (var i = nameLessonsLength; i >= elementsRandom; i--) {
-			favoriteLesson.push(lessonsArray[i])
-		}
-		return `${userName}: ${favoriteLesson.length > 0 ? favoriteLesson.join(', ' ) 
-			: 'У этого студента нет любимых предметов'}`
-	}
-
+function giveMeStringBro(str, num) {
+  if (str.length > num) {
+    var sliceStr = str.slice(0, num)
+    var result = sliceStr.concat('...')
+    return result
+  } else if (str.length < num) {
+    var newStr = str.replace(/ /g, '-')
+    return newStr
+  }
 }
-showStudentsFavoriteLessons('Артур', 'Женя', 'Костя', 'Маша', 'Денис')
+giveMeStringBro('Hello my dear friend', 11)
+```
+***
+
+### Задача №4
+
+Напишите функцию, которая принимает первым аргументом фразу, а вторым аргументом – слово (часть заданной фразы). Вырежьте из фразы заданное слово и верните строку которая осталась.
+
+``` js
+var phrase = 'The quick brown fox jumps over the lazy dog.'
+
+function cutString(phrase, str) {
+  var phraseWord = phrase.indexOf(str)
+  var lengthStr = str.length
+  return phrase.substr(0, phraseWord) + phrase.substr(phraseWord + lengthStr + 1)
+}
+
+cutString(phrase, 'lazy')
+
+
+var phrase = 'The quick brown fox jumps over the lazy dog.'
+
+function cutString(phrase, str) {
+  var phraseWord = phrase.indexOf(str)
+  var lengthStr = str.length
+  return phrase.substring(0, phraseWord) + phrase.substring(phraseWord + lengthStr + 1)
+}
+
+cutString(phrase, 'lazy')
+
+
+var phrase = 'The quick brown fox jumps over the lazy dog.';
+
+function cutString(phrase, str) {
+  var phraseWord = phrase.indexOf(str)
+  var lengthStr = str.length
+  return phrase.slice(0, phraseWord) + phrase.slice(phraseWord + lengthStr + 1)
+}
+
+cutString(phrase, 'lazy')
 ```
