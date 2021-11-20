@@ -49,4 +49,16 @@ function getElements(array) {
   return array.filter(element => element.length > 5)
 }
 getElements(words)
+
+
+function reduceWords(array) {
+  let words = array.reduce((accum, item) => {
+    if (item.length > 5) {
+      accum.push(item)
+    }
+    return accum
+  }, [])
+  return words
+}
+reduceWords(words)
 ```
