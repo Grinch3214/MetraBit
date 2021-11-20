@@ -138,5 +138,19 @@ function bestStudents(studentsMarks) {
   return name
 }
 bestStudents(studentsMarks)
+
+const studentsMarks  = [
+  {name: 'John', id: 123, mark : 98 },
+  {name: 'Baba', id: 101, mark : 23 },
+  {name: 'yaga', id: 200, mark : 45 },
+  {name: 'Wick', id: 115, mark : 75 }
+]
+
+function sumMarks(studentsMarks) {
+  return studentsMarks.reduce((accum, item) => accum += item.mark, 0)
+}
+sumMarks(studentsMarks)
+
+
 ```
 
