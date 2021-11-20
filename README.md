@@ -119,6 +119,24 @@ const studentsMarks  = [
 ```
 ---
 ```js
+function nameStudents(studentsMarks) {
+  return studentsMarks.map(item => item.name.toUpperCase())
+}
+nameStudents(studentsMarks)
 
+function bestStudents(studentsMarks) {
+  const students = studentsMarks.filter(item => {
+    if(item.mark > 50 && item.id > 120) {
+      return item.name
+    }
+  })
+
+  const name = students.reduce((accum, item) => {
+    accum.push(item.name)
+    return accum
+  }, [])
+  return name
+}
+bestStudents(studentsMarks)
 ```
 
