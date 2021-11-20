@@ -50,6 +50,7 @@ function getElements(array) {
 }
 getElements(words)
 
+***
 
 function reduceWords(array) {
   let words = array.reduce((accum, item) => {
