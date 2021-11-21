@@ -148,3 +148,20 @@ sumMarks(studentsMarks)
 
 ```
 
+***
+
+### Задача №6
+
+Напишите функцию, которая единственным аргументом будет принимать массив чисел. Функция должна возвращать массив его сумм каждого элемента и всех стоящих перед ним чисел. Для реализации функционала функции используйте метод .forEach().
+
+```js
+const numbers = [ 8, 4, 9, 7 ]
+
+function sumEachElenet(array) {
+  let num = 0
+  const numbersNew = []
+  array.forEach(element => numbersNew.push(num += element))
+  return numbersNew
+}
+sumEachElenet(numbers)
+```
