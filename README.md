@@ -124,6 +124,7 @@ function nameStudents(studentsMarks) {
 }
 nameStudents(studentsMarks)
 
+
 function bestStudents(studentsMarks) {
   const students = studentsMarks.filter(item => {
     if(item.mark > 50 && item.id > 120) {
@@ -146,6 +147,17 @@ function sumMarks(studentsMarks) {
 sumMarks(studentsMarks)
 
 
+function bonusForStudents(studentsMarks) {
+  let students = studentsMarks.reduce((accum, item) => {
+    if((item.mark + 15) > 50) {
+      accum.push(item.name)
+    }
+    return accum
+  }, [])
+  return students
+}
+
+bonusForStudents(studentsMarks)
 ```
 
 ***
