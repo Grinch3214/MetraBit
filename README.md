@@ -49,31 +49,33 @@
 Функция должна выводить в консоль сообщение ‘Светофор включен’ и запускать таймер для выключения светофора через заданное в качестве четвёртого параметра количество секунд таймер. После выключения светофора, вывести в консоль сообщение ‘Светофор выключен’. В течении времени работы светофора в консоль должны выводится строки ‘зелёный’, ‘жёлтый’, ‘красный’ по очереди с интервалами между цветами переданными в качестве параметров функции для каждого из цветов. (т.е. если зелёному был задан интервал 3 сек., то жёлтый должен ‘загореться’, через 3 сек. после зелёного)
 
 ```js
-function lights(green, yellow, red, time) {
-  console.log('Светофор включен')
+const lights = (green, yellow, red, end) => {
+    const states = { green, yellow, red }
+    let phase
+    let curStep = 0
+    let delay = 0
+    let timer = 0
+       
+    console.log('Светофор включен')
 
-  setTimeout(function greenLight() {
-    console.log('Зеленый')
-    document.querySelector('body').style.background = 'green'
-  }, green * 1000)
+    setTimeout(function inner() {
+        [phase, delay] = Object.entries(states)[curStep]
+        console.log(phase)
 
-  setTimeout(function yellowLight() {
-    console.log('Жёлтый')
-    document.querySelector('body').style.background = 'yellow'
-  }, yellow * 1000)
+        timer += delay
+        if (timer > end) {
+            console.log('Светофор выключен')
+            return
+        }
 
-  setTimeout(function redLight() {
-    console.log('Красный')
-    document.querySelector('body').style.background = 'red'
-  }, red * 1000)
+        curStep += 1;
+        if (curStep > 2) curStep = 0
 
-  setTimeout(function lights() {
-    console.log('Светофор выключен')
-    document.querySelector('body').style.background = '#fff'
-  }, time * 1000)
+        setTimeout(inner, delay * 1000)
+    }, delay * 1000)
 }
 
-lights(1, 3, 5, 7)
+lights(2, 2, 3, 10)
 ```
 
 ***
