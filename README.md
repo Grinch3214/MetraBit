@@ -301,3 +301,24 @@ function sortAge(arr) {
 }
 sortAge(users)
 ```
+
+***
+
+### Задача №12
+
+Напишите функцию, которая принимает массив отсортированных работников по зарплате и число. Для отладки кода использовать результат работы функции из задачи №10. Функция должна возвращать первый найденный объект массива, у которого зарплата меньше, чем переданное в аргументы число. Если в массиве нет элементов удовлетворяющих проверке, возвращать сообщение ‘Работников с зарплатой меньше { переданное число}$ не найдено’.  Для реализации функционала функции используйте метод .find().
+
+```js
+const users = [
+  { name: 'Sasha', age: 45, salary: 1900 },
+  { name: 'Max', age: 21, salary: 1500 },
+  { name: 'Nikita', age: 29, salary: 800 },
+  { name: 'Sergey', age: 32, salary: 2300 }
+]
+
+function minSalary(array, minimumSalary) {
+  const lazar = array.sort((a, b) => a.salary - b.salary).find(index => index.salary < minimumSalary)
+  return lazar === undefined ? `Работников с зарплатой меньше ${minimumSalary}$ не найдено` : lazar
+}
+minSalary(users, 2000)
+```
