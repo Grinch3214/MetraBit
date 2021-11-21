@@ -242,26 +242,10 @@ splitArray(arr, 4)
 Пример массива:
 ```js
 [
-  {
-    name: 'Sasha',
-    age: 45,
-    salary: 1900,
-  },
-  {
-    name: 'Max',
-    age: 21,
-    salary: 1500,
-  },
-  {
-    name: 'Nikita',
-    age: 29,
-    salary: 800,
-  },
-  {
-    name: 'Sergey',
-    age: 32,    
-    salary: 2300,
-  }
+  { name: 'Sasha', age: 45, salary: 1900 },
+  { name: 'Max', age: 21, salary: 1500 },
+  { name: 'Nikita', age: 29, salary: 800 },
+  { name: 'Sergey', age: 32, salary: 2300 }
 ]
 ```
 Функция должна отсортировать данный массив по возрастанию зарплаты и вернуть получившийся массив. 
