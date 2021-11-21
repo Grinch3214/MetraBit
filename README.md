@@ -216,3 +216,20 @@ flatArray(testArray)
 ### Задача №9
 
 Напишите функцию, которая в качестве аргументов принимает массив элементов и число. Функция должна возвращать массив с массивами из  элементов переданного массива. Длина внутренних массивов должна быть равной числу, переданному в качестве аргумента. Если длина исходного массива не кратна переданному числу, то оставшиеся элементы также поместить в массив.
+
+```js
+const arr = ['html', 'css', 'js', 'vue', 'react', 'angular']
+
+function splitArray(array, number) {
+  const splArray = []
+  array.forEach((value, index) => {
+    if (index % number === 0) {
+      splArray.push([value])
+    } else {
+      splArray[splArray.length - 1].push(value)
+    }
+  })
+  return splArray
+}
+splitArray(arr, 4)
+```
