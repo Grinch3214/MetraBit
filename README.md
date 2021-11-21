@@ -267,3 +267,37 @@ splitArray(arr, 4)
 Функция должна отсортировать данный массив по возрастанию зарплаты и вернуть получившийся массив. 
 Для реализации функционала функции используйте метод .sort().
 
+```js
+const users = [
+  { name: 'Sasha', age: 45, salary: 1900 },
+  { name: 'Max', age: 21, salary: 1500 },
+  { name: 'Nikita', age: 29, salary: 800 },
+  { name: 'Sergey', age: 32, salary: 2300 }
+]
+
+function sortSalary(array) {
+  return array.sort((a, b) => a.salary - b.salary)
+}
+sortSalary(users)
+```
+
+***
+
+### Задача №11
+
+Написать функцию, которая будет принимать массив в качестве аргумента и возвращать отсортированный массив по убыванию возраста. 
+Для отладки кода использовать пример массива из задачи №10. Для реализации функционала функции используйте метод .sort().
+
+```js
+const users = [
+  { name: 'Sasha', age: 45, salary: 1900 },
+  { name: 'Max', age: 21, salary: 1500 },
+  { name: 'Nikita', age: 29, salary: 800 },
+  { name: 'Sergey', age: 32, salary: 2300 }
+]
+
+function sortAge(arr) {
+  return arr.sort((a, b) => b.age - a.age)
+}
+sortAge(users)
+```
