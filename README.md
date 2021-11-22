@@ -68,7 +68,7 @@ const lights = (green, yellow, red, end) => {
             return
         }
 
-        curStep += 1;
+        curStep += 1
         if (curStep > 2) curStep = 0
 
         setTimeout(inner, delay * 1000)
