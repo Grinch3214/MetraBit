@@ -19,5 +19,5 @@
 ---
 **Homework 10 [(ссылка на файлы)](https://github.com/Grinch3214/tabs_js/tree/master/app)**  **[(ссылка на page)](https://grinch3214.github.io/tabs_js/dist/)**
 ---
-**Homework 10 [(ссылка на файлы)](https://github.com/Grinch3214/XMLHttpRequest)**  **[(ссылка на page)](https://grinch3214.github.io/XMLHttpRequest/)**
+**Homework 11 [(ссылка на файлы)](https://github.com/Grinch3214/XMLHttpRequest)**  **[(ссылка на page)](https://grinch3214.github.io/XMLHttpRequest/)**
 ---
