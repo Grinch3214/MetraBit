@@ -176,7 +176,7 @@ rangesArray.forEach(({start, end}) => {
   console.log(startHour, endHour); 
  
   let resultStr = ''; 
-  for (let i = 0; i <= 24; i++) { 
+  for (let i = 0; i <= 23; i++) { 
     i < startHour || i > endHour ? resultStr += '*' : resultStr += '#'
   } 
   console.log(resultStr);
