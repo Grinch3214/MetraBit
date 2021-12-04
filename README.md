@@ -170,15 +170,20 @@ const rangesArray = [
   }
 ]
 
-rangesArray.forEach(({start, end}) => { 
-  const startHour = new Date(start).getUTCHours(); 
-  const endHour = new Date(end).getUTCHours(); 
-  console.log(startHour, endHour); 
- 
-  let resultStr = ''; 
-  for (let i = 0; i <= 23; i++) { 
-    i < startHour || i > endHour ? resultStr += '*' : resultStr += '#'
-  } 
-  console.log(resultStr);
-});
+function rangeArr(rangesArray) {
+
+    rangesArray.forEach(({start, end}) => { 
+      const startHour = new Date(start).getUTCHours(); 
+      const endHour = new Date(end).getUTCHours(); 
+      console.log(startHour, endHour); 
+
+      let resultStr = ''; 
+      for (let i = 0; i <= 23; i++) { 
+        i < startHour || i > endHour ? resultStr += '*' : resultStr += '#'
+      }
+        console.log(resultStr);
+    });
+};
+
+rangeArr(rangesArray)
 ```
