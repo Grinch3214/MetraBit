@@ -85,5 +85,33 @@ xBet()
 Для обработки ошибки используйте метод catch. В метод catch передайте функцию, которая выводит полученное сообщение в консоль.
 
 ```js
+function getPhoto() {
+  const URL = 'https://jsonplaceholder.typicode.com/photos'
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest
+    xhr.open('GET', URL)
+    xhr.onload = function(event) {
+      if(this.status === 200) {
+        resolve(JSON.parse(this.response))
+      }
+      return reject('Что-то пошло не так')
+    }
+    xhr.send()
+  })
+}
 
+getPhoto().then((response) => {
+  const array = response
+  const idPhoto = array.filter(item => item.id === 1 || item.id === 3 || item.id === 5 || item.id === 7 || item.id === 9)
+  const body = document.querySelector('body')
+  console.log(idPhoto)
+  function drow() {
+    for (let i = 0; i < idPhoto.length; i++) {
+      let image = document.createElement('img')
+      image.src = idPhoto[i].url
+      body.appendChild(image)
+    }
+  }
+  drow()
+}).catch((response) => console.log(response))
 ```
