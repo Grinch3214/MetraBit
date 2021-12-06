@@ -109,7 +109,6 @@ getPhoto().then((response) => {
       image = document.createElement('img')
       body.appendChild(image)
       image.src = elem.url
-      
     })
   }
   drow()
