@@ -21,5 +21,5 @@
 ---
 **Homework 11 [(ссылка на файлы)](https://github.com/Grinch3214/XMLHttpRequest)**  **[(ссылка на page)](https://grinch3214.github.io/XMLHttpRequest/)**
 ---
-**[Homework 12](https://github.com/Grinch3214/MetraBit/tree/Homework_12#homework-12)**
+**[Homework 12](https://github.com/Grinch3214/MetraBit/tree/Homework_12#homework-12)** **[(ссылка на js файл)](https://github.com/Grinch3214/XMLHttpRequest-new-task/blob/master/js/main.js)** **[(ссылка на page)](https://grinch3214.github.io/XMLHttpRequest-new-task/)**
 ---
