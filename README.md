@@ -104,13 +104,13 @@ getPhoto().then((response) => {
   const array = response
   const idPhoto = array.filter(item => item.id === 1 || item.id === 3 || item.id === 5 || item.id === 7 || item.id === 9)
   const body = document.querySelector('body')
-  console.log(idPhoto)
   function drow() {
-    for (let i = 0; i < idPhoto.length; i++) {
-      let image = document.createElement('img')
-      image.src = idPhoto[i].url
+    idPhoto.forEach((elem) => {
+      image = document.createElement('img')
       body.appendChild(image)
-    }
+      image.src = elem.url
+      
+    })
   }
   drow()
 }).catch((response) => console.log(response))
