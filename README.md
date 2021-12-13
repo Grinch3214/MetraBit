@@ -23,3 +23,5 @@
 ---
 **[Homework 12](https://github.com/Grinch3214/MetraBit/tree/Homework_12#homework-12)** **[(ссылка на js файл(HW12-13))](https://github.com/Grinch3214/XMLHttpRequest-new-task/blob/master/js/main.js)** **[(ссылка на page)](https://grinch3214.github.io/XMLHttpRequest-new-task/)**
 ---
+**Homework 14 [(ссылка на файлы)](https://github.com/Grinch3214/form-registration/blob/master/dist/js/main.js)**  **[(ссылка на page)](https://grinch3214.github.io/form-registration/dist/)**
+---
