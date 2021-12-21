@@ -1,27 +1,61 @@
+# Homework #15
 
-**[Homework 1](https://github.com/Grinch3214/MetraBit/blob/Homework_1/README.md#homework-1)**
----
-**[Homework 2](https://github.com/Grinch3214/MetraBit/blob/Homework_2/README.md#homework-2)**
----
-**[Homework 3](https://github.com/Grinch3214/MetraBit/blob/Homework_3/README.md#homework-3)**
----
-**[Homework 4](https://github.com/Grinch3214/MetraBit/blob/Homework_4/README.md#homework-4)**
----
-**[Homework 5](https://github.com/Grinch3214/MetraBit/blob/Homework_5/README.md#homework-5)**
----
-**[Homework 6](https://github.com/Grinch3214/MetraBit/blob/Homework_6/README.md#homework-6)**
----
-**[Homework 7](https://github.com/Grinch3214/MetraBit/blob/Homework_7/README.md#homework-7)**
----
-**[Homework 8](https://github.com/Grinch3214/MetraBit/blob/Homework_8/README.md#homework-8)**
----
-**[Homework 9](https://github.com/Grinch3214/MetraBit/blob/Homework_9/README.md#homework-9)**
----
-**Homework 10 [(ссылка на файлы)](https://github.com/Grinch3214/tabs_js/tree/master/app)**  **[(ссылка на page)](https://grinch3214.github.io/tabs_js/dist/)**
----
-**Homework 11 [(ссылка на файлы)](https://github.com/Grinch3214/XMLHttpRequest)**  **[(ссылка на page)](https://grinch3214.github.io/XMLHttpRequest/)**
----
-**[Homework 12](https://github.com/Grinch3214/MetraBit/tree/Homework_12#homework-12)** **[(ссылка на js файл(HW12-13))](https://github.com/Grinch3214/XMLHttpRequest-new-task/blob/master/js/main.js)** **[(ссылка на page)](https://grinch3214.github.io/XMLHttpRequest-new-task/)**
----
-**Homework 14 [(ссылка на файлы)](https://github.com/Grinch3214/form-registration/blob/master/dist/js/main.js)**  **[(ссылка на page)](https://grinch3214.github.io/form-registration/dist/)**
----
+### Задача №1
+
+Создайте объект phone со следующими полями:
+* Name
+* Price
+* Discount
+* Quantity
+* Weight
+
+Значения укачать произвольные. Для нескольких полей задайте значение null.
+
+Напишите функцию, которая в качестве единственного аргумента принимает объект. Для того, чтобы не изменить значения полученного в аргументах объекта, внутри функции, создайте переменную для копирования объекта и создайте копию полученного в аргументах объекта с использованием метода Object.assign()
+
+При помощи метода Object.entries() создайте массив с элементами типа: [‘ключ’, ‘значение’]. Отфильтруйте данный массив так, чтобы в нём остались только элементы, у которых ‘значение’ нe равно null. Из отфильтрованного массива создайте объект, который будет состоять только из полей, значение которых не равно null. Функция должна возвращать получившийся объект.
+
+Вызовите функцию с объектом phone для демонстрации правильной работы функции.
+Реализуйте копирование полученного в аргументах объекта в переменную используя деструктурирующее присваивание.
+
+```js
+const phone = {
+  name: 'Xiaomi M1',
+  price: 3100,
+  discount: '10%',
+  quantity: null,
+  weight: null
+}
+
+function itemForObjectPhone(phone) {
+  const array = []
+  let objPhone = Object.assign({}, phone)
+  let arrKey = Object.entries(objPhone)
+  for (let i = 0; i < arrKey.length; i++) {
+    if(arrKey[i][1] !== null) {
+      array.push(arrKey[i])
+    }   
+  }
+  return Object.fromEntries(array)
+}
+
+itemForObjectPhone(phone)
+```
+
+*деструктурирующее присваивание*
+
+```js
+function itemForObjectPhone(phone) {
+  const array = [];
+  let { ...objPhone } = phone
+  let arrKey = Object.entries(objPhone)
+  for (let i = 0; i < arrKey.length; i++) {
+    if(arrKey[i][1] !== null) {
+      array.push(arrKey[i])
+    }   
+  }
+  return Object.fromEntries(array)
+}
+
+itemForObjectPhone(phone)
+```
