@@ -47,7 +47,7 @@ itemForObjectPhone(phone)
 ```js
 function itemForObjectPhone(phone) {
   const array = [];
-  let phone = { ...objPhone }
+  let { ...objPhone } = phone
   let arrKey = Object.entries(objPhone)
   for (let i = 0; i < arrKey.length; i++) {
     if(arrKey[i][1] !== null) {
