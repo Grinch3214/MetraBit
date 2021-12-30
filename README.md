@@ -146,7 +146,7 @@ const laptop = {
 
 function getObject(product) {
   let array = Object.values(product)
-  let [firstValue, secondValue = 'empty', ...restValues] = array
+  let [firstValue, secondValue = 'this value is empty', ...restValues] = array
   let updatedProduct = {
     firstValue: firstValue,
     secondValue: secondValue,
