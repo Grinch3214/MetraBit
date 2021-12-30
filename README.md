@@ -107,3 +107,54 @@ function objectСomparison(prodA, prodB) {
 
 objectСomparison(laptop, phone)
 ```
+
+***
+
+### Задача №3
+
+
+Напишите функцию, которая в качестве единственного аргумента принимает объект. При помощи метода Object.values() получите массив значений всех полей объекта.
+Произведите проверку полученного массива, если получившийся массив пуст, то функция должна вернуть строку ‘Object is empty’. В ином случаи создайте переменные firstValue, secondValue и restValues и с использованием деструктирующего присваивания установите им следующие значения:
+* firstValue – первый элемент массива
+* secondValue – второй элемент массива
+* restValues – оставшиеся элементы массива.
+
+Присваивание реализовать одной строкой. Переменной restValues установить дефолтное значение, равное пустому массиву.
+Из созданных переменных (firstValue, secondValue и restValues) создайте объект типа:
+
+```
+{
+  firstValue: значение переменной firstValue,
+  secondValue: значение переменной secondValue,
+  restValues: значение переменной restValues
+}
+```
+
+
+Функция должна возвращать созданный объект с 3-мя полями.
+Вызовите функцию с объектами laptop для демонстрации правильной работы функции.
+
+```js
+const laptop = {
+  name: 'HP Pavilion G6',
+  price: 4100,
+  discount: '8%',
+  width: 40,
+  height: 33,
+  diagonal: 15.6
+}
+
+function getObject(product) {
+  let array = Object.values(product)
+  let [firstValue, secondValue = 'empty', ...restValues] = array
+  let updatedProduct = {
+    firstValue: firstValue,
+    secondValue: secondValue,
+    restValues: restValues
+  }
+
+  return array.length ? updatedProduct : 'Object is empty'
+}
+getObject(laptop)
+```
+
