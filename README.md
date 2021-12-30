@@ -28,14 +28,9 @@ const phone = {
 }
 
 function itemForObjectPhone(phone) {
-  const array = []
   let objPhone = Object.assign({}, phone)
   let arrKey = Object.entries(objPhone)
-  for (let i = 0; i < arrKey.length; i++) {
-    if(arrKey[i][1] !== null) {
-      array.push(arrKey[i])
-    }   
-  }
+  let array = arrKey.filter(elem => elem[1] !== null)
   return Object.fromEntries(array)
 }
 
@@ -46,14 +41,9 @@ itemForObjectPhone(phone)
 
 ```js
 function itemForObjectPhone(phone) {
-  const array = [];
   let { ...objPhone } = phone
   let arrKey = Object.entries(objPhone)
-  for (let i = 0; i < arrKey.length; i++) {
-    if(arrKey[i][1] !== null) {
-      array.push(arrKey[i])
-    }   
-  }
+  let array = arrKey.filter(elem => elem[1] !== null)
   return Object.fromEntries(array)
 }
 
