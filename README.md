@@ -49,3 +49,61 @@ function itemForObjectPhone(phone) {
 
 itemForObjectPhone(phone)
 ```
+
+***
+
+### Задача №2
+
+Создайте ещё один объект, имя которого будет laptop. Объект должен содержать следующие поля:
+* Name
+* Price
+* Discount
+* Width
+* Height
+* Diagonal
+
+Значения указать произвольные.
+
+Напишите функцию, которая в качестве аргументов принимает два объекта. Функция должна найти не совпадающие имена полей двух объектов. Если имена полей первого объекта одинаковы с именами полей второго объекта, вывести true.  Если есть одно поле или более, которые встречается только в одном из двух объектов, вывести массив имен несовпадающих полей.
+* Для нахождения массива ключей использовать Object.keys.
+
+Вызовите функцию с объектами phone и laptop для демонстрации правильной работы функции.
+
+```js
+const phone = {
+  name: 'Xiaomi M1',
+  price: 3100,
+  discount: '10%',
+  quantity: null,
+  weight: null
+}
+
+const laptop = {
+  name: 'HP Pavilion G6',
+  price: 4100,
+  discount: '8%',
+  width: 40,
+  height: 33,
+  diagonal: 15.6
+}
+
+function objectСomparison(prodA, prodB) {
+  let prodAKeys = Object.keys(prodA)
+  let prodBKeys = Object.keys(prodB)
+  let comparison = []
+
+  prodAKeys.forEach((currentValue) => {
+    if(!(prodBKeys.includes(currentValue))) {
+      comparison.push(currentValue)
+    }
+  })
+  prodBKeys.forEach((currentValue) => {
+    if(!(prodAKeys.includes(currentValue))) {
+      comparison.push(currentValue)
+    }
+  })
+  return comparison.length ? comparison : true
+}
+
+objectСomparison(laptop, phone)
+```
